@@ -1,0 +1,24 @@
+{
+  "name": "babel-plugin-mjsx",
+  "version": "1.0.0",
+  "description": "Mithril precompilation JSX plugin for babel",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Naddiseo/babel-plugin-mjsx.git"
+  },
+  "keywords": [
+    "mithril",
+    "babel",
+    "plugin"
+  ],
+  "author": "Richard Eames",
+  "license": "BSD-3-Clause",
+  "bugs": {
+    "url": "https://github.com/Naddiseo/babel-plugin-mjsx/issues"
+  },
+  "homepage": "https://github.com/Naddiseo/babel-plugin-mjsx#readme"
+}
