@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-mjsx",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Mithril precompilation JSX plugin for babel",
   "main": "index.js",
   "scripts": {
