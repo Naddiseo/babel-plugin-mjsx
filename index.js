@@ -21,17 +21,19 @@ var deprecatedRx = new RegExp(deprecatedHTML);
 
 
 module.exports = function (babel) {
+	"use strict";
 
 	var t = babel.types;
 	var isStringLiteral = function (node) {
 		return t.isLiteral(node) && isString(node.value);
 	};
 	function cleanJSXElementLiteralChild(child, args) {
+		var i;
 		var lines = child.value.split(/\r\n|\n|\r/);
 	
 		var lastNonEmptyLine = 0;
 	
-		for (let i = 0; i < lines.length; i++) {
+		for (i = 0; i < lines.length; i++) {
 			if (lines[i].match(/[^ \t]/)) {
 				lastNonEmptyLine = i;
 			}
@@ -39,7 +41,7 @@ module.exports = function (babel) {
 	
 		var str = "";
 	
-		for (let i = 0; i < lines.length; i++) {
+		for (i = 0; i < lines.length; i++) {
 			var line = lines[i];
 	
 			var isFirstLine = i === 0;
