@@ -20,5 +20,8 @@
   "bugs": {
     "url": "https://github.com/Naddiseo/babel-plugin-mjsx/issues"
   },
-  "homepage": "https://github.com/Naddiseo/babel-plugin-mjsx#readme"
+  "homepage": "https://github.com/Naddiseo/babel-plugin-mjsx#readme",
+  "dependencies": {
+    "lodash": "^3.10.1"
+  }
 }
