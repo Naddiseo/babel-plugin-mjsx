@@ -2,14 +2,24 @@
 var isString = require('lodash/lang/isString');
  
 var htmlTags = (
-	'^(html|base|head|link|meta|style|title|address|article|' +
-	'body|footer|header|h[1-6]|hgroup|nav|section|dd|div|dl|dt|' +
-	'figcaption|figure|hr|li|main|ol|p|pre|ul|a|abbr|b|bdi|bdo|br|' +
-	'cite|code|data|dfn|em|i|kbd|mark|q|rp|rt|rtc|ruby|s|samp|small|span|strong|sub|' +
-	'time|u|var|wbr|area|audio|img|map|track|video|embed|iframe|object|param|source|' +
-	'canvas|noscript|script|del|ins|caption|col|colgroup|table|tbody|td|tfoot|th|thead|tr|' +
-	'button|datalist|fieldset|form|input|keygen|label|legend|meter|optgroup|option|output|progress|select|textarea|' +
-	'details|dialog|menu|menuitem|summary|content|decorator|element|shadow|template)$'
+	'^(' + [
+		'a', 'abbr', 'address', 'area', 'article', 'aside', 'audio', 'b',
+		'base', 'bdi', 'bdo', 'blockquote', 'body', 'br', 'button', 'canvas',
+		'caption', 'cite', 'code', 'col', 'colgroup', 'content', 'data',
+		'datalist', 'dd', 'decorator', 'del', 'details', 'dfn', 'dialog',
+		'div', 'dl', 'dt', 'element', 'em', 'embed', 'fieldset', 'figcaption',
+		'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head',
+		'header', 'hgroup', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins',
+		'kbd', 'keygen', 'label', 'legend', 'li', 'link', 'main', 'map',
+		'mark', 'menu', 'menuitem', 'meta', 'meter', 'nav', 'noscript',
+		'object', 'ol', 'optgroup', 'option', 'output', 'p', 'param',
+		'pre', 'progress', 'q', 'rp', 'rt', 'rtc', 'ruby', 's', 'samp',
+		'script', 'section', 'select', 'shadow', 'small', 'source', 'span',
+		'strong', 'style', 'sub', 'summary', 'sup', 'table', 'tbody', 'td',
+		'template', 'textarea', 'tfoot', 'th', 'thead', 'time', 'title', 'tr',
+		'track', 'u', 'ul', 'var', 'video', 'wbr'
+	].join('|') + ')$'
+
 );
  
 var deprecatedHTML = (
