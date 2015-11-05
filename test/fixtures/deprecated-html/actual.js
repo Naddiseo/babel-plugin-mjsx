@@ -1,0 +1,1 @@
+result = <blink>NO!</blink>;
