@@ -29,7 +29,7 @@
     "mocha": "^2.2.5"
   },
   "scripts": {
-    "build": "babel-plugin build",
+    "build": "babel src --out-dir lib",
     "push": "babel-plugin publish",
     "test": "mocha --compilers js:babel-core/register"
   },
