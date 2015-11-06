@@ -1,4 +1,7 @@
 # babel-plugin-mjsx
+
+[![Build Status](https://travis-ci.org/Naddiseo/babel-plugin-mjsx.svg?branch=babel6)](https://travis-ci.org/Naddiseo/babel-plugin-mjsx)
+
 Mithril precompilation JSX plugin for babel
 
 Example output:
