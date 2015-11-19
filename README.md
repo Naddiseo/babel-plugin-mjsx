@@ -1,4 +1,7 @@
 # babel-plugin-mjsx
+
+[![Build Status](https://travis-ci.org/Naddiseo/babel-plugin-mjsx.svg?branch=babel6)](https://travis-ci.org/Naddiseo/babel-plugin-mjsx)
+
 Mithril precompilation JSX plugin for babel
 
 Example output:
@@ -9,13 +12,13 @@ let KK = <div style="1" {...a}><Component foo="bar">Component children</Componen
 Transpiled:
 ```javascript
 var a = { t: 1 };
-	var KK = {
-		tag: 'div',
-		children: [m.component(Component, {
-			foo: 'bar'
-		}, ['Component children'])],
-		attrs: babelHelpers._extends({
-			style: '1'
-		}, a)
-	};
+var KK = {
+	tag: 'div',
+	children: [m.component(Component, {
+		foo: 'bar'
+	}, ['Component children'])],
+	attrs: babelHelpers._extends({
+		style: '1'
+	}, a)
+};
 ```
