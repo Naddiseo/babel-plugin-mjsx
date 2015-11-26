@@ -2,7 +2,24 @@
 
 [![Build Status](https://travis-ci.org/Naddiseo/babel-plugin-mjsx.svg?branch=master)](https://travis-ci.org/Naddiseo/babel-plugin-mjsx)
 
-Mithril precompilation JSX plugin for babel
+Mithril precompilation JSX plugin for babel.
+
+Installation
+============
+
+    $ npm i babel-plugin-mjsx
+
+Usage
+=====
+
+Add `babel-plugin-mjsx` to your plugins config:
+
+    $ cat .babelrc
+    {
+         "plugins": [ "babel-plugin-mjsx" ]
+    }
+
+More information on setting up Babel is available in [Babel's documentation](https://babeljs.io/docs/setup/)
 
 Example output:
 ```javascript
