@@ -16,7 +16,7 @@ Add `babel-plugin-mjsx` to your plugins config:
 
     $ cat .babelrc
     {
-         "plugins": [ "babel-plugin-mjsx" ]
+         "plugins": [ "mjsx" ]
     }
 
 More information on setting up Babel is available in [Babel's documentation](https://babeljs.io/docs/setup/)
