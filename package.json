@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-mjsx",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Mithril precompilation JSX plugin for babel",
   "main": "lib/index.js",
   "repository": {
@@ -20,7 +20,6 @@
   },
   "homepage": "https://github.com/Naddiseo/babel-plugin-mjsx#readme",
   "dependencies": {
-    "lodash": "^3.10.1",
     "babel-plugin-syntax-jsx": "^6.0"
   },
   "devDependencies": {
