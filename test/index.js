@@ -40,6 +40,7 @@ function trim(str) {
 
 describe("turn jsx into mithril compliant virtual-dom", () => {
 	const fixturesDir = path.join(__dirname, 'fixtures');
+	const original_log = console.log.bind(console);
 	
 	fs.readdirSync(fixturesDir).map(caseName => {
 		it(`should transform ${caseName.split('-').join(' ')}`, () => {
@@ -47,10 +48,17 @@ describe("turn jsx into mithril compliant virtual-dom", () => {
 			const expected = resolve(path.join(fixtureDir, 'expected.js'));
 			const opts = parse(resolve(path.join(fixtureDir, 'options.json')));
 			const throwMsg = opts.throws;
+			const consoleMsg = opts.console;
 			let actual = null;
+			let logMsgs = [];
+			function log(msg) {
+				logMsgs.push(msg);
+			}
 			
 			try {
+				console.log = log;
 				actual = transform(path.join(fixtureDir, 'actual.js'));
+				console.log = original_log;
 			}
 			catch (err) {
 				if (throwMsg) {
@@ -69,6 +77,14 @@ describe("turn jsx into mithril compliant virtual-dom", () => {
 			}
 			else {
 				assert.equal(trim(actual), trim(expected));
+			}
+			if (consoleMsg) {
+				assert.equal(consoleMsg.length, logMsgs.length);
+				for (let i = 0; i < consoleMsg.length; i++) {
+					let expectedMsg = consoleMsg[i];
+					let actualMsg = logMsgs[i];
+					assert.equal(expectedMsg, actualMsg);
+				}
 			}
 		});
 	});
