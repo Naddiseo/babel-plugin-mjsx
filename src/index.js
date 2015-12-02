@@ -1,29 +1,7 @@
-const htmlTags = (
-	'^(' + [
-		'a', 'abbr', 'address', 'area', 'article', 'aside', 'audio', 'b',
-		'base', 'bdi', 'bdo', 'blockquote', 'body', 'br', 'button', 'canvas',
-		'caption', 'cite', 'code', 'col', 'colgroup', 'content', 'data',
-		'datalist', 'dd', 'decorator', 'del', 'details', 'dfn', 'dialog',
-		'div', 'dl', 'dt', 'element', 'em', 'embed', 'fieldset', 'figcaption',
-		'figure', 'footer', 'form', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'head',
-		'header', 'hgroup', 'hr', 'html', 'i', 'iframe', 'img', 'input', 'ins',
-		'kbd', 'keygen', 'label', 'legend', 'li', 'link', 'main', 'map',
-		'mark', 'menu', 'menuitem', 'meta', 'meter', 'nav', 'noscript',
-		'object', 'ol', 'optgroup', 'option', 'output', 'p', 'param',
-		'pre', 'progress', 'q', 'rp', 'rt', 'rtc', 'ruby', 's', 'samp',
-		'script', 'section', 'select', 'shadow', 'small', 'source', 'span',
-		'strong', 'style', 'sub', 'summary', 'sup', 'table', 'tbody', 'td',
-		'template', 'textarea', 'tfoot', 'th', 'thead', 'time', 'title', 'tr',
-		'track', 'u', 'ul', 'var', 'video', 'wbr'
-	].join('|') + ')$'
-
-);
- 
 const deprecatedHTML = (
 	'^(acronym|applet|basefont|big|blink|center|dir|frame|frameset|isindex|listings|noembed|plaintext|spacer|strike|tt|xmp)$'
 );
 
-const htmlTagsRx = new RegExp(htmlTags);
 const deprecatedRx = new RegExp(deprecatedHTML);
 
 function D(v) {
@@ -113,8 +91,7 @@ export default function({ types: t }) {
 					if (deprecatedRx.test(tag.value)) {
 						throw new Error(`Using a deprecated html tag: '${ tag.value }'`);
 					}
-					
-					if (!htmlTagsRx.test(tag.value)) {
+					if (tag.value !== tag.value.toLowerCase()) {
 						isComp = true;
 					}
 				}
