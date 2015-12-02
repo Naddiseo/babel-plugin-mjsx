@@ -39,3 +39,12 @@ var KK = {
 	}, a)
 };
 ```
+
+Change Log
+==========
+
+v3.0.0
+
+* Removed forcing of tags to be "valid" html tags
+* Print warning instead of erroring for deprecated html tags 
+
