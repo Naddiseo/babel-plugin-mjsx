@@ -2,32 +2,32 @@
 
 result = {
 	tag: "html",
-	children: ["\n\t", {
+	children: [{
 		tag: "head",
-		children: ["\n\t\t", {
+		children: [{
 			tag: "title",
 			children: ["Hello World"]
-		}, "\n\t\t", {
+		}, {
 			tag: "style",
-			children: ["\n\t\t\t* { box-sizing: border-box; }\n\t\t"],
+			children: ["* { box-sizing: border-box; }"],
 			attrs: { type: "text/css" }
-		}, "\n\t\t", {
+		}, {
 			tag: "script",
 			attrs: { src: "./file.js", type: "text/javascript" }
-		}, "\n\t\t", {
+		}, {
 			tag: "meta",
 			attrs: { name: "encoding", value: "utf8" }
-		}, "\n\t"]
-	}, "\n\t", {
+		}]
+	}, {
 		tag: "body",
-		children: ["\n\t\t", {
+		children: [{
 			tag: "div"
-		}, "\n\t\t", {
+		}, {
 			tag: "a",
 			children: ["bar"],
 			attrs: { href: "foo" }
-		}, "\n\t\t", {
+		}, {
 			tag: "br"
-		}, "\n\t"]
-	}, "\n"]
+		}]
+	}]
 };

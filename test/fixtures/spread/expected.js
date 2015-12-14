@@ -4,9 +4,9 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 result = {
 	tag: "div",
-	children: ["\n\t", {
+	children: [{
 		tag: "div",
 		attrs: props
-	}, "\n"],
+	}],
 	attrs: _extends({ className: "test", id: id }, props, { key: "test", "data-expanded": expanded }, props.attrs)
 };

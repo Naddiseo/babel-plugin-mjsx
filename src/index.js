@@ -16,10 +16,10 @@ export default function({ types: t }) {
 			return node;
 		}
 	}
-
+	
 	function convertAttribute(node) {
 		let value = convertAttributeValue(node.value || t.booleanLiteral(true));
-
+		
 		if (t.isStringLiteral(value)) {
 			value.value = value.value.replace(/\n\s+/g, " ");
 		}
@@ -31,19 +31,74 @@ export default function({ types: t }) {
 		else {
 			propertyName = t.isValidIdentifier(propertyName.name) ? t.identifier(propertyName.name) : t.stringLiteral(propertyName.name);
 		}
-
+		
 		return t.inherits(t.objectProperty(propertyName, value), node);
 	}
+	
+	function _stringLiteralTrimmer(lastNonEmptyLine, lineCount, line, i) {
+		const isFirstLine = (i === 0);
+		const isLastLine = (i === lineCount - 1);
+		const isLastNonEmptyLine = (i === lastNonEmptyLine);
+		
+		// replace rendered whitespace tabs with spaces
+		let trimmedLine = line.replace(/\t/g, " ");
+		
+		
+		// trim leading whitespace
+		if (!isFirstLine) {
+			trimmedLine = trimmedLine.replace(/^[ ]+/, "");
+		}
+		
+		// trim trailing whitespace
+		if (!isLastLine) {
+			trimmedLine = trimmedLine.replace(/[ ]+$/, "");
+		}
+		
+		if (trimmedLine.length > 0) {
+			if (!isLastNonEmptyLine) {
+				trimmedLine += " ";
+			}
+			
+			return trimmedLine;
+		}
+		return '';
+	}
+	
+	function cleanStringLiteral(value) {
+		let lines = value.split(/\r\n|\n|\r/);
+		
+		let lastNonEmptyLine = 0;
+		
+		for (let i = lines.length - 1; i > 0 ; i--) {
+			if (lines[i].match(/[^ \t]/)) {
+				lastNonEmptyLine = i;
+				break;
+			}
+		}
+		
+		let str = lines
+			.map(_stringLiteralTrimmer.bind(null, lastNonEmptyLine, lines.length))
+			.filter(line => line.length > 0)
+			.join('')
+			;
+		
+		if (str.length > 0) {
+			return t.stringLiteral(str);
+		}
+	}
+	
 	function buildChildren(node) {
 		return node.children
 			.map(convertAttributeValue)
 			.filter(child => !t.isJSXEmptyExpression(child))
 			.map(child => {
 				if (t.isStringLiteral(child) || t.isJSXText(child)) {
-					return t.stringLiteral(child.value);
+					return cleanStringLiteral(child.value)
 				}
 				return child;
-			});
+			})
+			.filter(child => !!child)
+			;
 	}
 	
 	function flatten(args) {

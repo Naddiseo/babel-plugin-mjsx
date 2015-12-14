@@ -2,5 +2,5 @@
 
 result = {
   tag: "div",
-  children: ["\n\n"]
+  children: []
 };

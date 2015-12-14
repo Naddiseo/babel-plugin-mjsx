@@ -2,17 +2,17 @@
 
 result = {
 	tag: "div",
-	children: ["\n\tHello World!\n\t", {
+	children: ["Hello World!", {
 		tag: "div",
-		children: ["Bonjour"]
-	}, "\n\t", {
+		children: ["  Bonjour  "]
+	}, {
 		tag: "div",
 		children: ["What's up doc?"]
-	}, "\n\t", {
+	}, {
 		tag: "div",
 		children: [["More ", {
 			tag: "span",
 			children: ["·"]
 		}, " Text here"]]
-	}, "\n"]
+	}]
 };

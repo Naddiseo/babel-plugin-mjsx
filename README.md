@@ -43,6 +43,9 @@ var KK = {
 Change Log
 ==========
 
+v4.0.0
+* Changed output to trim whitespace similar to how v1.x did.
+
 v3.0.0
 
 * Removed forcing of tags to be "valid" html tags
