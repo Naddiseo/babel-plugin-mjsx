@@ -50,6 +50,10 @@ var KK = {
 Change Log
 ==========
 
+v4.1.1
+
+* Build fix
+
 v4.1.0
 
 * Added option to convert html attributes to proper casing

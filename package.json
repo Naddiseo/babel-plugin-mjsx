@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-mjsx",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "Mithril precompilation JSX plugin for babel",
   "main": "lib/index.js",
   "repository": {
@@ -29,6 +29,7 @@
   },
   "scripts": {
     "build": "babel src --out-dir lib",
+    "prepublish": "npm run build",
     "test": "mocha --compilers js:babel-core/register"
   },
   "babel": {
