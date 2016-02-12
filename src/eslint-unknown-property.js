@@ -40,7 +40,7 @@ const DOM_ATTRIBUTE_NAMES = {
 	'xml:space': 'xmlSpace'
 };
 
-const DOM_PROPERTY_NAMES = new Map();
+const DOM_PROPERTY_NAMES = {};
 
 [
 	// Standard
@@ -59,12 +59,15 @@ const DOM_PROPERTY_NAMES = new Map();
 	'autoSave',
 	'itemProp', 'itemScope', 'itemType', 'itemRef', 'itemID'
 ].forEach(function (x) {
-	DOM_PROPERTY_NAMES.set(x, x.toLowerCase());
+	DOM_PROPERTY_NAMES[x] = x.toLowerCase();
 })
 
 export function getStandardName(name) {
 	if (DOM_ATTRIBUTE_NAMES[name]) {
 		return DOM_ATTRIBUTE_NAMES[name];
 	}
-	return DOM_PROPERTY_NAMES.get(name) || name;
+	else if (DOM_PROPERTY_NAMES[name]) {
+		return DOM_PROPERTY_NAMES[name];
+	}
+	return name;
 }
