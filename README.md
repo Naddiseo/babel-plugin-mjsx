@@ -16,10 +16,17 @@ Add `babel-plugin-mjsx` to your plugins config:
 
     $ cat .babelrc
     {
-         "plugins": [ "mjsx" ]
+         "plugins": ["mjsx"]
     }
 
 More information on setting up Babel is available in [Babel's documentation](https://babeljs.io/docs/setup/)
+
+Available plugin options:
+
+* `jsxCompliant`: convert attributes to the correct casing, e.g: `onClick` -> `onclick`, or `for` -> `htmlFor`.
+* `warnDeprecatedHtml`: Warns of deprecated HTML tags such as `blink` and `center`. 
+
+More information on plugin options syntax is available in [Babel's documentation](http://babeljs.io/docs/plugins/#options)
 
 Example output:
 ```javascript
@@ -43,7 +50,34 @@ var KK = {
 Change Log
 ==========
 
+v4.1.0
+
+* Added option to convert html attributes to proper casing
+
+    ```
+    // Add "jsxCompliant" to babel plugin options:
+    $ cat .babelrc
+    {
+        "plugins":[
+            ["mjsx", { jsxCompliant: true }]
+        ]
+    }
+    ```
+
+* Added explicit `warnDeprecatedHtml` option to turn on the deprecated html tags warning added in v3
+
+    ```
+    // Add "warnDeprecatedHtml" to babel plugin options:
+    $ cat .babelrc
+    {
+        "plugins":[
+            ["mjsx", { warnDeprecatedHtml: true }]
+        ]
+    }
+    ```
+
 v4.0.0
+
 * Changed output to trim whitespace similar to how v1.x did.
 
 v3.0.0
