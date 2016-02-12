@@ -1,0 +1,1 @@
+result = (<div onClick={function(){}}><label for="hello"></label></div>);

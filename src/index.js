@@ -1,3 +1,5 @@
+import { getStandardName as getJSXCompliantName } from './eslint-unknown-property';
+
 const deprecatedHTML = (
 	'^(acronym|applet|basefont|big|blink|center|dir|frame|frameset|isindex|listings|noembed|plaintext|spacer|strike|tt|xmp)$'
 );
@@ -17,19 +19,28 @@ export default function({ types: t }) {
 		}
 	}
 	
-	function convertAttribute(node) {
+	function fixupPropertyName(propertyName, opts = {}) {
+		let nameValue = propertyName.name;
+		if (opts.jsxCompliant) {
+			if ((t.isIdentifier(propertyName) || t.isJSXIdentifier(propertyName))) {
+				nameValue = getJSXCompliantName(nameValue);
+			}
+		}
+		else {
+			// Old/mithril behaviour
+			if ((t.isIdentifier(propertyName) || t.isJSXIdentifier(propertyName)) && nameValue === 'class') {
+				nameValue = 'className';
+			}
+		}
+		return t.isValidIdentifier(nameValue) ? t.identifier(nameValue) : t.stringLiteral(nameValue)
+	}
+	
+	function convertAttribute(node, opts = {}) {
+		let propertyName = fixupPropertyName(node.name, opts);
 		let value = convertAttributeValue(node.value || t.booleanLiteral(true));
 		
 		if (t.isStringLiteral(value)) {
 			value.value = value.value.replace(/\n\s+/g, " ");
-		}
-		
-		let propertyName = node.name;
-		if ((t.isIdentifier(propertyName) || t.isJSXIdentifier(propertyName)) && propertyName.name === 'class') {
-			propertyName = t.identifier('className');
-		}
-		else {
-			propertyName = t.isValidIdentifier(propertyName.name) ? t.identifier(propertyName.name) : t.stringLiteral(propertyName.name);
 		}
 		
 		return t.inherits(t.objectProperty(propertyName, value), node);
@@ -122,7 +133,7 @@ export default function({ types: t }) {
 		inherits: require('babel-plugin-syntax-jsx'),
 		
 		visitor: {
-			JSXElement(path, {file}) {
+			JSXElement(path, {file, opts}) {
 				let {node, parent, scope} = path;
 				let open = node.openingElement;
 				let obj = t.objectExpression([]);
@@ -163,7 +174,7 @@ export default function({ types: t }) {
 						attrObjs.push(attr.argument);
 					}
 					else {
-						props.push(convertAttribute(attr));
+						props.push(convertAttribute(attr, opts));
 					}
 				}
 				pushProps();

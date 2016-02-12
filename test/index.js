@@ -26,8 +26,8 @@ function resolve(path) {
 	return expected;
 }
 
-function transform(path) {
-	return transformFileSync(path, {plugins: [require('../src').default]}).code;
+function transform(path, opts = {}) {
+	return transformFileSync(path, {plugins: [[require('../src').default, opts]]}).code;
 }
 
 function parse(json) {
@@ -49,6 +49,7 @@ describe("turn jsx into mithril compliant virtual-dom", () => {
 			const opts = parse(resolve(path.join(fixtureDir, 'options.json')));
 			const throwMsg = opts.throws;
 			const consoleMsg = opts.console;
+			
 			let actual = null;
 			let logMsgs = [];
 			function log(msg) {
@@ -57,7 +58,7 @@ describe("turn jsx into mithril compliant virtual-dom", () => {
 			
 			try {
 				console.log = log;
-				actual = transform(path.join(fixtureDir, 'actual.js'));
+				actual = transform(path.join(fixtureDir, 'actual.js'), opts.opts || {});
 				console.log = original_log;
 			}
 			catch (err) {
