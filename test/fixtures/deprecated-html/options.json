@@ -1,3 +1,4 @@
 {
-  "console": [ "Using a deprecated html tag: 'blink'" ]
+  "console": [ "Using a deprecated html tag: 'blink'" ],
+  "opts": { "warnDeprecatedHtml": true }
 }

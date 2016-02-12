@@ -154,7 +154,7 @@ export default function({ types: t }) {
 				
 				if (t.isJSXIdentifier(tag)) {
 					tag = t.stringLiteral(tag.name);
-					if (deprecatedRx.test(tag.value)) {
+					if (opts.warnDeprecatedHtml && deprecatedRx.test(tag.value)) {
 						console.log(`Using a deprecated html tag: '${ tag.value }'`);
 					}
 					if (tag.value !== tag.value.toLowerCase()) {
