@@ -8,10 +8,12 @@ Copyright (c) 2014 Yannick Croissant
 */
 
 const DOM_ATTRIBUTE_NAMES =  {
+  // Standard
   'acceptCharset': 'accept-charset',
   'className': 'class',
   'htmlFor': 'for',
   'httpEquiv': 'http-equiv',
+  // SVG
   'clipPath': 'clip-path',
   'fillOpacity': 'fill-opacity',
   'fontFamily': 'font-family',
