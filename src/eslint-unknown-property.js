@@ -7,37 +7,37 @@ The MIT License (MIT)
 Copyright (c) 2014 Yannick Croissant
 */
 
-const DOM_ATTRIBUTE_NAMES = {
-	// Standard
-	'accept-charset': 'acceptCharset',
-	'class': 'className',
-	'for': 'htmlFor',
-	'http-equiv': 'httpEquiv',
-	// SVG
-	'clip-path': 'clipPath',
-	'fill-opacity': 'fillOpacity',
-	'font-family': 'fontFamily',
-	'font-size': 'fontSize',
-	'marker-end': 'markerEnd',
-	'marker-mid': 'markerMid',
-	'marker-start': 'markerStart',
-	'stop-color': 'stopColor',
-	'stop-opacity': 'stopOpacity',
-	'stroke-dasharray': 'strokeDasharray',
-	'stroke-linecap': 'strokeLinecap',
-	'stroke-opacity': 'strokeOpacity',
-	'stroke-width': 'strokeWidth',
-	'text-anchor': 'textAnchor',
-	'xlink:actuate': 'xlinkActuate',
-	'xlink:arcrole': 'xlinkArcrole',
-	'xlink:href': 'xlinkHref',
-	'xlink:role': 'xlinkRole',
-	'xlink:show': 'xlinkShow',
-	'xlink:title': 'xlinkTitle',
-	'xlink:type': 'xlinkType',
-	'xml:base': 'xmlBase',
-	'xml:lang': 'xmlLang',
-	'xml:space': 'xmlSpace'
+const DOM_ATTRIBUTE_NAMES =  {
+  // Standard
+  'acceptCharset': 'accept-charset',
+  'className': 'class',
+  'htmlFor': 'for',
+  'httpEquiv': 'http-equiv',
+  // SVG
+  'clipPath': 'clip-path',
+  'fillOpacity': 'fill-opacity',
+  'fontFamily': 'font-family',
+  'fontSize': 'font-size',
+  'markerEnd': 'marker-end',
+  'markerMid': 'marker-mid',
+  'markerStart': 'marker-start',
+  'stopColor': 'stop-color',
+  'stopOpacity': 'stop-opacity',
+  'strokeDasharray': 'stroke-dasharray',
+  'strokeLinecap': 'stroke-linecap',
+  'strokeOpacity': 'stroke-opacity',
+  'strokeWidth': 'stroke-width',
+  'textAnchor': 'text-anchor',
+  'xlinkActuate': 'xlink:actuate',
+  'xlinkArcrole': 'xlink:arcrole',
+  'xlinkHref': 'xlink:href',
+  'xlinkRole': 'xlink:role',
+  'xlinkShow': 'xlink:show',
+  'xlinkTitle': 'xlink:title',
+  'xlinkType': 'xlink:type',
+  'xmlBase': 'xml:base',
+  'xmlLang': 'xml:lang',
+  'xmlSpace': 'xml:space'
 };
 
 const DOM_PROPERTY_NAMES = {};
